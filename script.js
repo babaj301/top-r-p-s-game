@@ -47,7 +47,7 @@ function getComputerChoice() {
 
 function playRound(playerSelection, computerSelection) {
   const playerMove = playerSelection.toLowerCase();
-  const result = "";
+  let result = "";
   if (computerSelection === "rock") {
     if (playerMove === "rock") {
       result = `It's a Tie`;
@@ -81,3 +81,6 @@ function playRound(playerSelection, computerSelection) {
   return result;
 }
 
+console.log(playRound("rock", getComputerChoice()));
+
+// Write a function to play game
