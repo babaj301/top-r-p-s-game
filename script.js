@@ -84,7 +84,7 @@ function playRound(playerSelection, computerSelection) {
   return result;
 }
 
-console.log(playRound("Rock", getComputerChoice()));
+// console.log(playRound("Rock", getComputerChoice()));
 
 // Write a function to play game
 // create two variables to keep the scores of the player and the computer
@@ -93,12 +93,29 @@ console.log(playRound("Rock", getComputerChoice()));
 
 function game() {
   const input = prompt(`What's your guess`);
-  let playerWIn = 0;
+  let playerWin = 0;
   let compWin = 0;
-  let overallWInner = "";
+  let overallWinner = ``;
   for (let i = 1; i <= 5; i++) {
     console.log(playRound(input, getComputerChoice()));
+    // Writing conditionals for increasing score variables
+    if (playRound() === "Tie") {
+      playerWin = playerWin;
+      compWin = compWin;
+    } else if (playRound() === `You Win!`) {
+      playerWin++;
+    } else if (playRound() === "You lose!") {
+      compWin++;
+    }
   }
+
+  if (playerWin > 2 && compWin <= 2) {
+    overallWinner = `Player Wins - ${playerWin}, ${compWin}`;
+  } else if (compWin > 2 && playerWin <= 2) {
+    overallWinner = `Player losese - ${playerWin}, ${compWin}`;
+  }
+
+  return overallWinner;
 }
 
-game();
+console.log(game());
