@@ -92,6 +92,13 @@ console.log(playRound("Rock", getComputerChoice()));
 // return the overallWinner as a string
 
 function game() {
+  const input = prompt(`What's your guess`);
   let playerWIn = 0;
   let compWin = 0;
+  let overallWInner = "";
+  for (let i = 1; i <= 5; i++) {
+    console.log(playRound(input, getComputerChoice()));
+  }
 }
+
+game();
