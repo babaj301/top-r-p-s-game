@@ -46,8 +46,11 @@ function getComputerChoice() {
 // 7c. if player is paper- PlayerLose
 
 function playRound(playerSelection, computerSelection) {
-  const playerMove = playerSelection.toLowerCase();
   let result = "";
+  // Making the playerSelection Variable Case insensitive
+  const playerOriginal = String(playerSelection);
+  let playerMove = playerOriginal.toLowerCase();
+
   if (computerSelection === "rock") {
     if (playerMove === "rock") {
       result = `It's a Tie`;
@@ -81,6 +84,6 @@ function playRound(playerSelection, computerSelection) {
   return result;
 }
 
-console.log(playRound("rock", getComputerChoice()));
+console.log(playRound("Rock", getComputerChoice()));
 
 // Write a function to play game
