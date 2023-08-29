@@ -97,22 +97,26 @@ function game() {
   let compWin = 0;
   let overallWinner = ``;
   for (let i = 1; i <= 5; i++) {
-    console.log(playRound(input, getComputerChoice()));
+    // Save the result in a variable for easy use(Thanks Testi <3)
+    const result = playRound(input, getComputerChoice());
+    console.log(result);
+
     // Writing conditionals for increasing score variables
-    if (playRound() === "Tie") {
-      playerWin = playerWin;
-      compWin = compWin;
-    } else if (playRound() === `You Win!`) {
+
+    if (result.includes(`You Win!`)) {
       playerWin++;
-    } else if (playRound() === "You lose!") {
+    }
+    if (result.includes(`You lose!`)) {
       compWin++;
     }
-  }
 
-  if (playerWin > 2 && compWin <= 2) {
-    overallWinner = `Player Wins - ${playerWin}, ${compWin}`;
-  } else if (compWin > 2 && playerWin <= 2) {
-    overallWinner = `Player losese - ${playerWin}, ${compWin}`;
+    // Displaying the Overall Winner
+
+    if (playerWin > compWin) {
+      overallWinner = `You're the overall winner- You ${playerWin}, Computer ${compWin}`;
+    } else if (compWin > playerWin) {
+      overallWinner = `Computer is the overall winner- You ${playerWin}, Computer ${compWin}`;
+    }
   }
 
   return overallWinner;
