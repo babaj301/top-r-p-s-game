@@ -53,31 +53,31 @@ function playRound(playerSelection, computerSelection) {
 
   if (computerSelection === "rock") {
     if (playerMove === "rock") {
-      result = `It's a Tie`;
+      result = `Tie`;
     } else if (playerMove === "scissors") {
-      result = `You lose! Rock beats Scissors`;
+      result = `You lose!`;
     } else if (playerMove === "paper") {
-      result = `You Win! Paper beats Rock`;
+      result = `You Win!`;
     }
   }
 
   if (computerSelection === "paper") {
     if (playerMove === "paper") {
-      result = `It's a Tie`;
+      result = `Tie`;
     } else if (playerMove === "rock") {
-      result = `You lose! Paper beats Rock`;
+      result = `You lose!`;
     } else if (playerMove === "scissors") {
-      result = `You Win! Scissors beats Paper`;
+      result = `You Win!`;
     }
   }
 
   if (computerSelection === "scissors") {
     if (playerMove === "scissors") {
-      result = `It's a Tie`;
+      result = `Tie`;
     } else if (playerMove === "paper") {
-      result = `You lose! Scissors beats Paper`;
+      result = `You lose!`;
     } else if (playerMove === "rock") {
-      result = `You Win! Rock beats Scissors`;
+      result = `You Win!`;
     }
   }
 
@@ -87,3 +87,11 @@ function playRound(playerSelection, computerSelection) {
 console.log(playRound("Rock", getComputerChoice()));
 
 // Write a function to play game
+// create two variables to keep the scores of the player and the computer
+// Compare the two scores and store which is bigger in overallWinner variable
+// return the overallWinner as a string
+
+function game() {
+  let playerWIn = 0;
+  let compWin = 0;
+}
