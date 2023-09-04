@@ -1,3 +1,15 @@
+//Add event listener for buttons
+// Bring in buttons as dom objects
+
+const rock = document.querySelector(".rock");
+const paper = document.querySelector(".paper");
+const scissors = document.querySelector(".scissors");
+const displayResult = document.querySelector(".result");
+
+rock.addEventListener("click", playRound);
+paper.addEventListener("click", playRound);
+scissors.addEventListener("click", playRound);
+
 // Write Function to get the computer choice
 // It randomly returns either rock, paper or scissors
 
@@ -44,10 +56,16 @@ function getComputerChoice() {
 // 7a. if  player is rock- PlayerWin
 // 7b. if player is scissors- Tie
 // 7c. if player is paper- PlayerLose
+let compWin = 0;
+let playerWin = 0;
 
-function playRound(playerSelection, computerSelection) {
+function playRound(playerSelection, computerSelection = getComputerChoice()) {
   let result = "";
+
   // Making the playerSelection Variable Case insensitive
+  // Setting the value for the parameters
+  playerSelection = this.innerText;
+  // computerSelection = getComputerChoice();
   const playerOriginal = String(playerSelection);
   let playerMove = playerOriginal.toLowerCase();
 
@@ -55,9 +73,11 @@ function playRound(playerSelection, computerSelection) {
     if (playerMove === "rock") {
       result = `Tie`;
     } else if (playerMove === "scissors") {
-      result = `You lose!`;
+      result = `You lose!,Rock beats Scissors`;
+      compWin++;
     } else if (playerMove === "paper") {
-      result = `You Win!`;
+      result = `You Win!,Paper beats Rock`;
+      playerWin++;
     }
   }
 
@@ -65,9 +85,11 @@ function playRound(playerSelection, computerSelection) {
     if (playerMove === "paper") {
       result = `Tie`;
     } else if (playerMove === "rock") {
-      result = `You lose!`;
+      result = `You lose!,Paper beats Rock`;
+      compWin++;
     } else if (playerMove === "scissors") {
-      result = `You Win!`;
+      result = `You Win!,Scissors beats Paper`;
+      playerWin++;
     }
   }
 
@@ -75,51 +97,28 @@ function playRound(playerSelection, computerSelection) {
     if (playerMove === "scissors") {
       result = `Tie`;
     } else if (playerMove === "paper") {
-      result = `You lose!`;
+      result = `You lose!,Scissors beats Paper,`;
+      compWin++;
     } else if (playerMove === "rock") {
-      result = `You Win!`;
+      result = `You Win!,Rock beats Scissors`;
+      playerWin++;
     }
+  }
+
+  if (compWin < 5 && playerWin < 5) {
+    displayResult.innerText = `Computer has ${compWin} Wins, Player has ${playerWin} Wins.`;
+    displayResult.classList.remove("toggle");
+  } else if (compWin > 4) {
+    displayResult.innerText = `Computer Wins`;
+    displayResult.classList.add("toggle");
+    playerWin = 0;
+    compWin = 0;
+  } else if (playerWin > 4) {
+    displayResult.innerText = `Player Wins`;
+    displayResult.classList.add("toggle");
+    playerWin = 0;
+    compWin = 0;
   }
 
   return result;
 }
-
-// console.log(playRound("Rock", getComputerChoice()));
-
-// Write a function to play game
-// create two variables to keep the scores of the player and the computer
-// Compare the two scores and store which is bigger in overallWinner variable
-// return the overallWinner as a string
-
-function game() {
-  const input = prompt(`What's your guess`);
-  let playerWin = 0;
-  let compWin = 0;
-  let overallWinner = ``;
-  for (let i = 1; i <= 5; i++) {
-    // Save the result in a variable for easy use(Thanks Testi <3)
-    const result = playRound(input, getComputerChoice());
-    console.log(result);
-
-    // Writing conditionals for increasing score variables
-
-    if (result.includes(`You Win!`)) {
-      playerWin++;
-    }
-    if (result.includes(`You lose!`)) {
-      compWin++;
-    }
-
-    // Displaying the Overall Winner
-
-    if (playerWin > compWin) {
-      overallWinner = `You're the overall winner- You ${playerWin}, Computer ${compWin}`;
-    } else if (compWin > playerWin) {
-      overallWinner = `Computer is the overall winner- You ${playerWin}, Computer ${compWin}`;
-    }
-  }
-
-  return overallWinner;
-}
-
-console.log(game());

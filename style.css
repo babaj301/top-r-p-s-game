@@ -1,0 +1,66 @@
+.header {
+  font-size: 24px;
+  font-weight: bold;
+  text-align: center;
+}
+
+.blue {
+  color: lightcoral;
+}
+.red {
+  color: lightcoral;
+}
+.white {
+  color: lightblue;
+}
+
+.play {
+  text-align: center;
+  font-size: 20px;
+  color: lightblue;
+  margin-top: 2px;
+}
+
+body {
+  background-color: black;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
+}
+
+.container {
+  display: flex;
+  width: 400px;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+button {
+  padding: 10px 20px;
+  font-size: 18px;
+  background-color: transparent;
+  color: white;
+  border: 2px solid white;
+}
+.rock {
+  color: lightcoral;
+}
+.paper {
+  color: lightblue;
+}
+.scissors {
+  color: lightcoral;
+}
+
+.result {
+  color: white;
+  padding-top: 20px;
+  font-size: 16px;
+  
+}
+
+.toggle {
+  color: lightgreen;
+}
